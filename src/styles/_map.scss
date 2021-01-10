@@ -1,0 +1,30 @@
+$boxSize: 20px;
+$gapSize: 2px;
+
+section {
+  perspective: 2000px;
+  padding-left: 50px;
+  perspective-origin: left;
+}
+
+.map {
+  display: grid;
+  grid-template-columns: repeat(50, $boxSize);
+  box-sizing: border-box;
+  grid-gap: $gapSize;
+  transform: rotate3d(1, 0, 0, 55deg);
+}
+
+.block {
+  width: $boxSize;
+  height: $boxSize;
+  background-color: lightgrey;
+  box-shadow: 0 0 0 $gapSize darkgray;
+
+  &.clicked {
+    background-color: beige;
+  }
+  &.drag {
+    background-color: black;
+  }
+}
