@@ -1,18 +1,46 @@
 $boxSize: 20px;
 $gapSize: 2px;
 
-section {
+article {
   perspective: 2000px;
   padding-left: 50px;
-  perspective-origin: left;
+  perspective-origin: center;
 }
 
 .map {
   display: grid;
-  grid-template-columns: repeat(50, $boxSize);
+  grid-template-columns: repeat(10, $boxSize);
+  // grid-template-columns: repeat(1, $boxSize);
   box-sizing: border-box;
   grid-gap: $gapSize;
-  transform: rotate3d(1, 0, 0, 55deg);
+  transform-style: preserve-3d;
+  // transform: rotateX(55deg) rotateZ(15deg);
+  transform: rotateX(55deg);
+  // transform: rotateZ(90deg) rotateY(-55deg);
+  // transform: rotateZ(180deg) rotateX(-55deg);
+  // transform: rotateZ(270deg) rotateY(55deg);
+  transition: transform 2s ease-out;
+
+  &.rotation-0 {
+    transform: rotateX(55deg);
+  }
+  &.rotation-1 {
+    transform: rotateZ(90deg) rotateY(-55deg);
+  }
+  &.rotation-2 {
+    transform: rotateZ(180deg) rotateX(-55deg);
+  }
+  &.rotation-3 {
+    transform: rotateZ(270deg) rotateY(55deg);
+  }
+}
+
+@mixin block-side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  border: 1px solid black;
 }
 
 .block {
@@ -20,11 +48,42 @@ section {
   height: $boxSize;
   background-color: lightgrey;
   box-shadow: 0 0 0 $gapSize darkgray;
+  transform-style: preserve-3d;
 
   &.clicked {
-    background-color: beige;
+    background-color: darkblue;
   }
-  &.drag {
-    background-color: black;
+  &.mouseover {
+    box-shadow: inset 0px 0px 4px black;
+  }
+
+  &__top {
+    @include block-side;
+    background-color: chocolate;
+    transform: translateZ($boxSize);
+  }
+
+  &__front {
+    @include block-side;
+    background-color: #d50000;
+    transform: rotateX(-90deg) translateZ($boxSize/2) translateY(-$boxSize/2);
+  }
+
+  &__left {
+    @include block-side;
+    background-color: #304ffe;
+    transform: rotateY(-90deg) translateZ($boxSize/2) translateX($boxSize/2);
+  }
+
+  &__right {
+    @include block-side;
+    background-color: #0091ea;
+    transform: rotateY(90deg) translateZ($boxSize/2) translateX(-$boxSize/2);
+  }
+
+  &__back {
+    @include block-side;
+    background-color: #00bfa5;
+    transform: rotateX(90deg) translateZ($boxSize/2) translateY($boxSize/2);
   }
 }

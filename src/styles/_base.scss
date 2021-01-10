@@ -10,3 +10,8 @@ html {
   color: $primary-color;
   line-height: 1.4;
 }
+
+article {
+  display: grid;
+  place-content: center;
+}
