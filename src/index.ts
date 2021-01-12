@@ -1,34 +1,52 @@
 const map = document.querySelector('#map');
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 2500; i++) {
   const block = document.createElement('div');
   block.classList.add('block');
-  block.innerHTML = `
-    <div class="block__front"></div>
-    <div class="block__left"></div>
-    <div class="block__back"></div>
-    <div class="block__right"></div>
-    <div class="block__top"></div>
 
-  `;
   block.addEventListener('mouseover', () => {
     block.classList.add('mouseover');
   });
   block.addEventListener('mouseleave', () => {
     block.classList.remove('mouseover');
   });
-  block.addEventListener('click', () => {
-    block.classList.add('clicked');
-  });
+
+  const applyClicked = (event: PointerEvent) => {
+    if (event.pressure > 0) block.classList.add('clicked');
+  };
+  block.addEventListener('pointerdown', applyClicked);
+  block.addEventListener('pointerenter', applyClicked);
 
   map.appendChild(block);
 }
 
-let actualRotation = 0;
+let z = 45;
+let scale = 1;
 
-document.querySelector('#rotate').addEventListener('click', () => {
+function transform(zInc: number, scaleInc: number): void {
+  z += zInc;
+  if (scale + scaleInc > 0) {
+    scale += scaleInc;
+  }
   const map = document.querySelector('#map');
-  map.classList.remove(`rotation-${actualRotation}`);
-  actualRotation = (actualRotation + 1) % 4;
-  map.classList.add(`rotation-${actualRotation}`);
-});
+  map.setAttribute(
+    'style',
+    `transform: rotateX(55deg) rotateZ(${z}deg) scale(${scale})`
+  );
+}
+
+document
+  .querySelector('#rotate-right')
+  .addEventListener('click', () => transform(45, 0));
+
+document
+  .querySelector('#rotate-left')
+  .addEventListener('click', () => transform(-45, 0));
+
+document
+  .querySelector('#zoom-in')
+  .addEventListener('click', () => transform(0, 0.5));
+
+document
+  .querySelector('#zoom-out')
+  .addEventListener('click', () => transform(0, -0.5));
