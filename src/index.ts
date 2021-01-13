@@ -1,3 +1,5 @@
+import '@material/mwc-icon-button';
+
 const map = document.querySelector('#map');
 
 for (let i = 0; i < 2500; i++) {
@@ -36,17 +38,17 @@ function transform(zInc: number, scaleInc: number): void {
 }
 
 document
-  .querySelector('#rotate-right')
+  .querySelector('#rotate_right')
   .addEventListener('click', () => transform(45, 0));
 
 document
-  .querySelector('#rotate-left')
+  .querySelector('#rotate_left')
   .addEventListener('click', () => transform(-45, 0));
 
 document
-  .querySelector('#zoom-in')
+  .querySelector('#zoom_in')
   .addEventListener('click', () => transform(0, 0.5));
 
 document
-  .querySelector('#zoom-out')
+  .querySelector('#zoom_out')
   .addEventListener('click', () => transform(0, -0.5));

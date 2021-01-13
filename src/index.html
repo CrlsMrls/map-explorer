@@ -5,17 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Map explorer</title>
     <link rel="stylesheet" href="./styles/index.scss" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons&display=block"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <article class="map">
+      <section id="map" class="map__map"></section>
+      <section class="map__buttons">
+        <mwc-icon-button id="rotate_left" icon="rotate_left"></mwc-icon-button>
+        <mwc-icon-button
+          id="rotate_right"
+          icon="rotate_right"
+        ></mwc-icon-button>
+        <mwc-icon-button id="zoom_in" icon="zoom_in"></mwc-icon-button>
+        <mwc-icon-button id="zoom_out" icon="zoom_out"></mwc-icon-button>
+      </section>
+    </article>
+
     <header>
-      <button id="rotate-left">Rotate left</button>
-      <button id="rotate-right">Rotate right</button>
-      <button id="zoom-in">Zoom in</button>
-      <button id="zoom-out">Zoom out</button>
+      <h1>Map explorer</h1>
     </header>
-    <article>
-      <div id="map" class="map"></div>
-    </section>
+
+    <footer></footer>
 
     <script src="./index.ts"></script>
   </body>

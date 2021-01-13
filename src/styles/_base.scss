@@ -11,6 +11,29 @@ html {
   line-height: 1.4;
 }
 
+body {
+  display: grid;
+  grid-template-rows: 60px 90vh 40px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  color: whitesmoke;
+  transform: translateZ(1px);
+  grid-row-start: 1;
+}
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transform: translateZ(1px);
+}
+
 article {
   display: grid;
   place-content: center;

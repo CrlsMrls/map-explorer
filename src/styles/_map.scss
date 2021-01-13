@@ -8,13 +8,24 @@ article {
 }
 
 .map {
-  display: grid;
-  grid-template-columns: repeat(50, $boxSize);
-  box-sizing: border-box;
-  grid-gap: $gapSize;
-  transform-style: preserve-3d;
-  transform: rotateX(55deg) rotateZ(45deg);
-  transition: transform 2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &__map {
+    display: grid;
+    grid-template-columns: repeat(50, $boxSize);
+    box-sizing: border-box;
+    grid-gap: $gapSize;
+    transform-style: preserve-3d;
+    transform: rotateX(55deg) rotateZ(45deg);
+    transition: transform 2s ease;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @mixin block-side {
