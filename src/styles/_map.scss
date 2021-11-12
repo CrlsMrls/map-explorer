@@ -1,5 +1,4 @@
 $boxSize: min(1.5vh, 1vw);
-$gapSize: 1px;
 
 article {
   perspective: 2000px;
@@ -15,24 +14,17 @@ article {
 
   &__map {
     display: grid;
-    grid-template-columns: repeat(50, $boxSize);
+    // grid-template-columns: repeat(50, $boxSize);
     box-sizing: border-box;
-    grid-gap: $gapSize;
+    grid-gap: 1px;
     transform-style: preserve-3d;
-    transform: rotateX(55deg) rotateZ(45deg);
+    transform: rotateX(55deg);
     transition: transform 2s ease;
   }
   &__buttons {
     display: flex;
     justify-content: center;
   }
-}
-
-@mixin block-side {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 1px solid black;
 }
 
 .block {

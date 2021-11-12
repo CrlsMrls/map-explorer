@@ -1,11 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "ESM",
+
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "~/*": ["./*"]
-    },
-    "typeRoots": ["node_modules/@types"]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+    "module": "es2022"
+  }
 }
